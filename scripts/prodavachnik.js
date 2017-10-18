@@ -1,25 +1,24 @@
 function startApp() {
-	showHideMenuLinks();
+    showHideMenuLinks();
     showHomeView();
 
     // Bind the navigation menu links
     $("#linkHome").click(showHomeView);
     $("#linkLogin").click(showLoginView);
     $("#linkRegister").click(showRegisterView);
-	$("#linkLogout").click(logoutUser);
+    $("#linkLogout").click(logoutUser);
 
     // Bind the form submit buttons
     $("#buttonLoginUser").click(loginUser);
     $("#buttonRegisterUser").click(registerUser);
-
-
+    
     function showView(viewName) {
         // Hide all views and show the selected view only
         $('main > section').hide();
         $('#' + viewName).show();
     }
-	
-	function showHideMenuLinks() {
+
+    function showHideMenuLinks() {
         $("#linkHome").show();
         if (sessionStorage.getItem('authToken') === null) {
             // No logged in user
@@ -34,7 +33,6 @@ function startApp() {
         }
     }
 
-
     function showHomeView() {
         showView('viewHome');
     }
@@ -48,8 +46,6 @@ function startApp() {
         $('#formRegister').trigger('reset');
         showView('viewRegister');
     }
-}
-
 
     // user/login
     function loginUser() {
