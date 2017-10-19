@@ -7,9 +7,12 @@
                 creator: 0
             },
             title: "XBoss 1080",
+            description: "Modded gaming console",
             publisher: "Pesho",
             datePublished: "2017-06-04",
-            price: 100
+            price: 100,
+            image: "./static/fuze-f1.png"
+
         }
     ];
 
@@ -128,6 +131,7 @@
             };
         }
     });
+
     // Create advert
     $.mockjax(function (requestSettings) {
         if (requestSettings.url === "https://mock.api.com/appdata/kid_rk/adverts" &&
@@ -148,6 +152,7 @@
                                 creator: creator
                             },
                             title: data.title,
+                            description: data.description,
                             publisher: data.publisher,
                             datePublished: data.datePublished,
                             price: data.price
@@ -182,8 +187,6 @@
         }
     });
 	
-	
-	
     // Load single advert
     $.mockjax(function (requestSettings) {
         if (requestSettings.url.match(/https:\/\/mock\.api\.com\/appdata\/kid_rk\/adverts\/(.+)/) &&
@@ -216,9 +219,11 @@
                         if (advert.length > 0) {
                             advert = advert[0];
                             advert.title = data.title;
+                            advert.description = data.description;  
                             advert.publisher = data.publisher;
                             advert.datePublished = data.datePublished;
                             advert.price = data.price;
+                            advert.image = data.image;
                             this.responseText = advert;
                         }
                         this.responseText = {};
